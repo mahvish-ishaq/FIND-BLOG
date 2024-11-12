@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIND - Financial Advisor Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            background-image: url("blog background.jpg"); /* Background image */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Container styling */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(77, 77, 77, 0.8); /* Semi-transparent grey background for readability */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header styling */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+
+        h1 {
+            color: white;
+            margin-top: 10px;
+            font-size: 2.2em;
+        }
+
+        /* Section styling */
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: transform 0.2s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+		
+
+        /* Section headers */
+        .section h2 {
+            margin-top: 0;
+            color: #005b96;
+            font-size: 1.8em;
+        }
+		/* Block Diagram Section styling */
+        .block-diagram {
+            margin-top: 40px;
+        }
+
+        .block-diagram img {
+            width: 100%;
+            height: auto;
+            border: 2px solid red;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Button styling */
+        .read-more {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #0056b3;
+        }
+
+        /* List styling */
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+		
+		 /* Methods Section styling */
+        .methods {
+            margin-top: 40px;
+            text-align: left;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .methods h2 {
+            color: white;
+            font-size: 2em;
+        }
+
+        .methods ul {
+            list-style-type: none;
+            padding-left: 0;
+			
+        }
+
+        .methods li {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+			
+        }
+
+        .methods strong {
+            color: blue;
+        }
+		
+		/* Slideshow Section styling */
+        .slideshow-container {
+            position: relative;
+            max-width: 80%;
+            margin: 40px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+        }
+
+        /* Caption text */
+        .caption {
+            color: #ffffff;
+            font-size: 1.2em;
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Navigation buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+
+        /* Contact Section styling */
+        .contact-details {
+            text-align: left side;
+            margin-top: 40px;
+        }
+
+        .contact-details p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .contact-details i {
+            margin-right: 8px;
+            font-size: 1.3em;
+        }
+
+        /* Query form styling */
+        .query-form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .query-form h3 {
+            color: #005b96;
+        }
+
+        .query-form label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .query-form input, .query-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        .query-form button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .query-form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+            }
+        }
+		
+		  /* Footer Section */
+        .footer {
+            margin-top: 40px;
+            padding: 10px;
+            font-size: 1em;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+      
+    </style>
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <!-- Logo Image -->
+            <img src="C:\Users\ACER\OneDrive\Documents\CAPSTONE PROJECT FIND\find logo.jpeg" alt="FIND Logo">
+            <h1>FIND - Your Personal Financial Advisor, Always at Your Service</h1>
+			
+        </div>
+
+        <!-- Abstract Section -->
+        <div class="section">
+            <h2>Introduction</h2>
+            <p>The AI-Based Financial Advisor website is an innovative platform designed to help individuals manage their finances and investments more effectively. By utilizing AI and machine learning, the website provides personalized financial plans, tailored investment recommendations, detailed expense tracking, and goal-setting tools. The advisor aims to empower users with actionable insights and strategies to achieve their financial goals and ensure long-term stability. With features like real-time data integration, dynamic plan updates, and user-friendly interfaces, the AI-Based Financial Advisor offers a comprehensive solution for modern financial management.  For our Capstone Project, we are working on FIND - Revolutionizing Financial Guidance with AI-Powered Personal Advisors which aims to facilitate individuals in effectively managing their finances and investments. FIND helps individuals to solve any of their financial concerns and addresses the growing need for personalized financial guidance. While our financial goals are increasing, our project helps users make better decisions and reach their goals in the best way possible. Our website chatbot offers various suggestions to users based on their input and choice for managing debt or investing in various fields. It also advises on "How to save their money or source income in the best way for any future use".</p>
+        </div>
+
+        <!-- Objectives Section -->
+        <div class="section">
+            <h2>Our Services</h2>
+            <ul>
+                <li><strong>Personalized Financial Management:</strong> Tailor financial plans based on user data.</li>
+                <li><strong>AI-Driven Investment Recommendations:</strong> Offer personalized investment suggestions.</li>
+                <li><strong>Expense Tracking:</strong> Automatically track and categorize expenses.</li>
+                <li><strong>Goal Setting:</strong> Assist users in setting and achieving financial goals.</li>
+            </ul>
+        </div>
+
+        
+
+        <!-- Existing Methods Section -->
+        <div class="section">
+            <h2>Existing Methods</h2>
+            <p>To differentiate our Financial Advisor Website from existing solutions, we analyzed these popular applications: Financely and FinAI. While these platforms provide financial guidance, our project introduces unique elements that make it stand out.</p>
+            <ul>
+                <li><strong>Financely:</strong> An AI-based financial advisor and user portfolio management system that demystifies trading and the stock market, making them accessible to those without a formal education in finance.</li>
+                <li><strong>FinAI SME Advisor:</strong> A Flask application utilizing GPT-3.5 Turbo, it provides financial and business advice for SMEs, focusing on loan queries and predictive analytics, deployed conveniently with features like loan approval predictions and business idea generation.</li>
+			
+            </ul>
+        </div>
+		<div class="block-diagram">
+            <h2>Block Diagram Architecture</h2>
+            <p>Below is the Block Diagram illustrating the architecture of the AI-Based Financial Advisor website:</p>
+            <img src="block diagram.png" alt="Block Diagram of Architecture">
+        </div>
+
+        <!-- Proposed Methods Section -->
+        <div class="section">
+            <h2>Solution to the Existing Challenges</h2>
+            <p>FIND - Revolutionizing Financial Guidance with AI-Powered Personal Advisors is designed to help individuals manage their finances and investments more effectively. By utilizing AI and machine learning, FIND provides personalized financial plans, tailored investment recommendations, detailed expense tracking, and goal-setting tools. The advisor aims to empower users with actionable insights and strategies to achieve their financial goals and ensure long-term stability. With features like real-time data integration, dynamic plan updates, and user-friendly interfaces, FIND offers a comprehensive solution for modern financial management.</p>
+        </div>
+		 <!-- Methods Section -->
+    <div class="methods">
+        <h2>Modules</h2>
+        <ul>
+            <li><strong>1. Natural Language Processing (NLP) Libraries:</strong>
+                <ul>
+                    <li><strong>NLTK:</strong> For basic text processing tasks such as tokenization, stemming, and lemmatization.</li>
+                    <li><strong>spaCy:</strong> A robust NLP library for tasks like entity recognition and dependency parsing, useful for understanding complex financial terms and user queries.</li>
+                    <li><strong>Transformers by Hugging Face:</strong> A library with pre-trained models for conversational AI, such as GPT and BERT, ideal for implementing contextual understanding and response generation in financial conversations.</li>
+                </ul>
+            </li>
+            <li><strong>2. Machine Learning Frameworks:</strong>
+                <ul>
+                    <li><strong>TensorFlow/Keras:</strong> For training and fine-tuning deep learning models used in chatbot conversations and recommendation engines. TensorFlow's flexibility allows customization of model layers and architectures as needed for financial data.</li>
+                </ul>
+            </li>
+            <li><strong>3. Conversational AI Models:</strong>
+                <ul>
+                    <li><strong>OpenAI’s GPT or BERT-based Models:</strong> Models like GPT-3 or similar open-source alternatives are highly effective for generating human-like responses and understanding intent, which can be crucial in financial advisement.</li>
+                </ul>
+            </li>
+            <li><strong>4. Data Storage and Management:</strong>
+                <ul>
+                    <li><strong>MySQL:</strong> For storing user information, chat histories, and financial data securely. A database is essential for tracking user queries, preferences, and feedback for continuous model improvement.</li>
+                </ul>
+            </li>
+            <li><strong>6. APIs and Integration Tools:</strong>
+                <ul>
+                    <li><strong>Dialogflow or Microsoft Bot Framework:</strong> For easy integration of the chatbot into your website. These platforms provide pre-built natural language understanding and can handle deployment on multiple channels.</li>
+                    <li><strong>Financial Data APIs:</strong> To fetch up-to-date financial information for the chatbot to provide real-time advice on stock prices, market trends, or savings recommendations.</li>
+                </ul>
+            </li>
+            <li><strong>7. Continuous Learning and Feedback Mechanism:</strong>
+                <ul>
+                    <li><strong>Reinforcement Learning:</strong> A technique to continuously improve the chatbot based on user interactions. Tools like TensorFlow-Agents can help in implementing reinforcement learning strategies where the bot learns from past conversations.</li>
+                    <li><strong>User Feedback Integration:</strong> Gathering user feedback on responses to fine-tune models with labeled data (for supervised fine-tuning) or improve response quality through user satisfaction scoring.</li>
+                </ul>
+            </li>
+			<li><strong>Gamification Points System:</strong>
+			    <ul>
+				    <li> Rewards or Points will be provided as it encourages the users to save more and also instill a sense of competition which will help them in managing their finances effectively.</li>
+				</ul>
+			</li>
+        </ul>
+    </div>
+		
+		<!-- Result Interfaces Section -->
+		
+    <div class="slideshow-container">
+	 <h2>Result Interfaces</h2>
+        <div class="slides">
+            <img src="C:\Users\ACER\OneDrive\Documents\CAPSTONE PROJECT FIND\home pgae.jpeg" style="width:100%">
+           
+        </div>
+        <div class="slides">
+            <img src="C:\Users\ACER\OneDrive\Documents\CAPSTONE PROJECT FIND\expense tracking.jpeg" style="width:100%">
+         
+        </div>
+        <div class="slides">
+            <img src="C:\Users\ACER\OneDrive\Documents\CAPSTONE PROJECT FIND\Our team.png" style="width:100%">
+          
+        </div>
+        
+        <!-- Navigation buttons -->
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+    </script>  
+	    
+        <!-- Conclusion Section -->
+        <div class="section">
+          <h2>Our Reflections</h2>
+          <p>The FIND Financial Advisor Website successfully brings a new, accessible, and personalized approach to financial management through its AI-driven chatbot. Designed to empower users with practical, tailored advice, FIND bridges the gap between expensive financial advisory services and those who lack access to expert guidance. The platform's intuitive interface, data-driven insights, and advanced learning capabilities ensure that users receive timely, accurate, and relevant recommendations to achieve their financial goals.</p>
+          <p>As it continuously evolves through user feedback and algorithm improvements, FIND stands as a valuable tool for individuals looking to take control of their finances. By focusing on affordability, privacy, and user experience, it democratizes financial planning and enhances financial literacy for a diverse audience. The project has demonstrated the potential to transform personal finance management, offering a user-friendly, reliable, and innovative solution to real-world financial challenges.</p>
+        </div>
+	
+		<!-- Contact Details Section -->
+		<div class="contact-details">
+            <h2>Contact Us</h2>
+            <p><i>📍 </i>SR UNIVERSITY, Ananthasagar, Telangana, India, 506001</p>
+            <p><i>📧 </i><a href="mailto:2103a51473@sru.edu.in">2103a51473@sru.edu.in</a></p>
+            <p><i>📞 </i>+91 81436 33278</p>
+			<p><br>
+                For Further Details, Contact our Guide: L.GUNAKAR RAO <br>
+                (Assistant Professor, SR University)<br>
+                <i>📞 </i>+91 99593 20104
+            </p>
+        </div>
+
+
+        <!-- Query Form Section -->
+        <div class="query-form">
+            <h3>For any Queries</h3>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="query">Type Your Query Here:</label>
+                <textarea id="query" name="query" rows="4" required></textarea>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+	
+	<!-- Footer Section with Copyright Notice -->
+    <div class="footer">
+        <p>&#169; 2024 All Rights Reserved</p>
+    </div>
+
+</body>
+</html>
